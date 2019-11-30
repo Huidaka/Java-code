@@ -1,14 +1,17 @@
 package cn.Huidaka;
 final class Test1{
-      int i = 0;
+      int i = 1;
+      final int i2 = 0;//final修饰的类变量还是在栈上储存，并且与对象强相关。
       String str = new String("hahaha") ;
 }
+
 class  Test2{
     final Test1 t1 = new Test1();
     final Test1 t2;
-    Test2(){
+    Test2() {
         t2 = new Test1();//final修饰对象句柄的时候要不定义句柄的时候实例化，要不构建器里面实例化，否则编辑器会报错；
     }
+
 }
 public class TestFinalKeyWord {//测试final关键字。
 
@@ -27,3 +30,4 @@ public class TestFinalKeyWord {//测试final关键字。
         System.out.println(t2.t1.str);
     }
 }
+//在类中声明常量通常用static，final组合使用。
