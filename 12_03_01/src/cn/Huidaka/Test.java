@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Test {
     public static void main(String[] args) {
-          MyArray myArray = new MyArray(3);
+        MyArray myArray = new MyArray(3);
         myArray.add(1);
         myArray.add(2);
         myArray.add(3);
@@ -18,5 +18,7 @@ public class Test {
         myArray.print();
         myArray.intdexFindtoNumber(2);
         myArray.numberFindtointdex(2);
+        myArray.full();
+        myArray.print();
     }
 }

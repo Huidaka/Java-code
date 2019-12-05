@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public class MyArray {
     private int data;
-    int[] num;
+    private int[] num;
     private int size = 0;
 
     public MyArray() {
@@ -15,6 +15,7 @@ public class MyArray {
     public MyArray(int m) {
         if(m < 0){
             System.out.println("开辟数组大小输入有误");
+            return;
         }
         num = new int[m];
     }
@@ -22,54 +23,58 @@ public class MyArray {
     //向动态数组插入元素,默认向数组尾部插入
     public void add(int data){
         if(size == num.length){
-            num = Arrays.copyOf(num,size+1);
+            dilatation();
         }
         num[size++] = data;
     }
     //实现向动态数组任意位置插入元素
-    public void add(int intdex,int data){
-        if(intdex<0 || intdex > size){
+    public void add(int index,int data){
+        if(index<0 || index > size){
             System.out.println("索引非法");
             return;
         }
-        if(intdex == size){
+        if(index == size){
             add(data);
         }
         else {
-            num = Arrays.copyOf(num,size+1);
-            System.arraycopy(num, intdex, num, intdex + 1, size - intdex);
-            num[intdex] = data;
+            dilatation();
+            System.arraycopy(num, index, num, index + 1, size - index);
+            num[index] = data;
             size++;
         }
     }
     //实现向动态数组删除元素
-    public void remove(int intdex){
-        if(intdex<0 || intdex >= size){
+    public void remove(int index){
+        if(index<0 || index >= size){
             System.out.println("索引非法");
             return;
         }
         else{
-            System.arraycopy(num,intdex+1,num,intdex,size-intdex-1);
+            System.arraycopy(num,index+1,num,index,size-index-1);
             num = Arrays.copyOf(num,size-1);
             size--;
         }
     }
     //修改数组中的元素
-    public void modification(int intdex,int data){
-        if(intdex<0 || intdex >= size){
+    public void modification(int index,int data){
+        if(index<0 || index >= size){
             System.out.println("索引非法");
             return;
         }
-        num[intdex] = data;
+        num[index] = data;
+    }
+    //清空数组的所有方法
+    public void full(){
+        Arrays.fill(num,0);
     }
     //根据索引查找数组中的元素并输出
-    public void intdexFindtoNumber(int intdex){
-        if(intdex<0 || intdex >= size){
+    public void intdexFindtoNumber(int index){
+        if(index<0 || index >= size){
             System.out.println("索引非法");
             return;
         }
         else{
-            System.out.println(num[intdex]);
+            System.out.println(num[index]);
         }
     }
     //根据元素查找数组中的索引并输出
@@ -93,5 +98,9 @@ public class MyArray {
             }
         }
         System.out.println();
+    }
+    //数组扩容
+    private void dilatation(){
+        num = Arrays.copyOf(num,size+1);
     }
 }
