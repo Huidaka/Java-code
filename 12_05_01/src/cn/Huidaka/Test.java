@@ -7,5 +7,7 @@ public class Test {
         s.addFirst(2);
         s.addFirst(1);
         s.print();
+        s.reverse();
+        s.print();
     }
 }

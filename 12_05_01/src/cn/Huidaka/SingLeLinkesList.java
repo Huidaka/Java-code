@@ -30,6 +30,10 @@ public class SingLeLinkesList {
     private int size;
     private Node first;
     private Node last;
+    //默认添加方法：尾插
+    public void add(int data){
+        addLast(data);
+    }
     //头插
     public void addFirst(int data){
         Node node = new Node(null, data);
@@ -56,11 +60,37 @@ public class SingLeLinkesList {
         last = node;
         size++;
     }
+
+    //回文链表（反转链表）
+    public void reverse(){
+        if(size == 0){
+            return;
+        }
+        Node tempLeft = null;
+        Node temp = first;
+        Node tempRight = first.getNext();
+        temp.setNext(null);
+        while ((tempRight != null)) {
+            tempLeft = temp;
+            temp = tempRight;
+            tempRight = temp.getNext();
+            temp.setNext(tempLeft);
+        }
+        last  = first;
+        first = temp;
+    }
+    //遍历链表
     public void print(){
         Node temp = first;
         while(temp != null){
-            System.out.println(temp.getData());
-            temp = temp.getNext();
+            if(temp.getNext() == null) {
+                System.out.println(temp.getData());
+                temp = temp.getNext();
+            }
+            else {
+                System.out.print(temp.getData() + " ");
+                temp = temp.getNext();
+            }
         }
     }
 }
