@@ -1,8 +1,8 @@
-package oj;
+package leetcode;
 
  public class ListNode {
         int val;
-        oj.ListNode next;
+        leetcode.ListNode next;
         ListNode(int x) { val = x; }
  }
 
