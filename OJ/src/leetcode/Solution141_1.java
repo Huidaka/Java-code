@@ -1,7 +1,7 @@
 package leetcode;
 //给定一个链表，判断链表中是否有环。
 //快慢指针
-public class Solution1141_1 {
+public class Solution141_1 {
     public boolean hasCycle(ListNode head) {
         if(head == null || head.next == null){
             return false;
