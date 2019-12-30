@@ -14,20 +14,16 @@ public class Solution92 {
         ListNode newprev = null;
         ListNode newlast = null;
         for(int i = 0 ; i <=  n-2; i++) {
-            if(i >= m-1){
-                if(i == m-1){
-                    newprev = tempLeft;
-                    newlast = temp;
-                }
-                tempLeft = temp;
-                temp = tempRight;
-                tempRight = temp.next;
-                temp.next = tempLeft;
-                continue;
+            if(i == m-1){
+                newprev = tempLeft;
+                newlast = temp;
             }
             tempLeft = temp;
             temp = tempRight;
             tempRight = temp.next;
+            if(i >= m-1){
+                temp.next = tempLeft;
+            }
         }
         if(newprev != null){
             newprev.next = temp;
