@@ -47,10 +47,4 @@ public class Solution912_1{
         }
     }
 
-    public static void main(String[] args) {
-        Solution148_2 solution148_2 = new Solution148_2();
-        int a[] = new int[]{45,65,45,4832,414,112,145};
-        solution148_2.testmergeSort(a,a.length);
-        System.out.println(Arrays.toString(a));
-    }
 }
