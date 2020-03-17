@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Queue;
 
 /**
- * 设计循环队列
+ *循环队列
  */
 public class Solution622 {
 
