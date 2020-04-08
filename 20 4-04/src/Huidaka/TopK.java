@@ -6,11 +6,13 @@ import java.util.PriorityQueue;
 
 /**
  * 实现topk问题
+ * 找前k个最大的元素，建立小堆
+ * 找前k个最小的元素，建立大堆
  */
 class TopKComparator implements Comparator<Integer> {
     @Override
     public int compare(Integer o1, Integer o2) {
-        return o1-o2;
+        return o2-o1;
     }
 }
 
@@ -23,7 +25,7 @@ public class TopK {
                 priorityQueue.offer(array[i]);
             }
             else{
-                if(array[i] > priorityQueue.peek()){
+                if(array[i] < priorityQueue.peek()){
                     priorityQueue.poll();
                     priorityQueue.offer(array[i]);
                 }
