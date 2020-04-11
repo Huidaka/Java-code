@@ -10,6 +10,10 @@ class Node {
         this.next = next;
         this.random = random;
     }
+
+    public Node(int val) {
+        this.val = val;
+    }
 }
 /**
  *给定一个链表，每个节点包含一个额外增加的随机指针，该指针可以指向链表中的任何节点或空节点。
