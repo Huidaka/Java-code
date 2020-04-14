@@ -50,17 +50,17 @@ public class BinarySearchTree {
                 cur = cur.left;
             }
         }
-        if(parent.left == null){
+        if(parent.data > key){
             parent.left = node;
         }
-        if(parent.right == null){
+        if(parent.data < key){
             parent.right = node;
         }
         return true;
     }
 
     public void remove(int key) {
-        Node parent = null;
+        Node parent = root;
         Node cur = root;
         while (cur != null) {
             if(cur.data == key) {
@@ -78,11 +78,39 @@ public class BinarySearchTree {
     private void removeNode(Node parent,Node cur) {
         if(cur.left == null) {
             //3种情况
-
+            if(cur == root){
+                cur = cur.right;
+            }
+            else if(cur == parent.left){
+                parent.left = cur.right;
+            }
+            else if(cur == parent.right){
+                parent.right = cur.right;
+            }
         }else if(cur.right == null) {
-
+            if(cur == root){
+                cur = cur.left;
+            }
+            else if(cur == parent.left){
+                parent.left = cur.left;
+            }
+            else if(cur == parent.right){
+                parent.right = cur.left;
+            }
         }else {
-
+            Node targetP = cur;
+            Node target = cur.right;
+            while (target.left != null){
+                targetP = target;
+                target = target.left;
+            }
+            cur.data = target.data;
+            if(target == targetP.left) {
+                targetP.left = target.right;
+            }
+            if(target == targetP.right){
+                targetP.right = target.right;
+            }
         }
     }
 
