@@ -1,5 +1,7 @@
 package Huidaka;
 
+import java.lang.reflect.Constructor;
+
 public enum TestEnum {
 
     //枚举对象
@@ -29,14 +31,14 @@ public enum TestEnum {
 
     public static void reflectPrivateConstructor() {
         try {
-            Class<?> classStudent = Class.forName("TestEnum");
+            Class<?> classStudent = Class.forName("Huidaka.TestEnum");
 
             Constructor<?> declaredConstructorStudent =
                     classStudent.getDeclaredConstructor(String.class, int.class,String.class, int.class);
 
             //设置为true后可修改访问权限
             declaredConstructorStudent.setAccessible(true);
-
+            //写的Eunm默认继承于Object的Eunm，四个形参中后边两个是给父类构造的
             Object objectStudent = declaredConstructorStudent.newInstance("棕色", 666,"父类的",14);
             TestEnum testEnum = (TestEnum) objectStudent;
             System.out.println("获得枚举的私有构造函数：" + testEnum);
