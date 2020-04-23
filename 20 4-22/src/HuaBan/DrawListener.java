@@ -48,8 +48,7 @@ public class DrawListener extends MouseAdapter implements ActionListener{
      	}
      	//画填充矩形
     	if(str.equals("fillRect")){
-    		Shape s = new Shape(x2,y2,80,40,color,
-                    new BasicStroke(1),"fillRect");
+    		Shape s = new Shape(x2,y2,80,40,color, new BasicStroke(1),"fillRect");
      			s.draw(g2);
      	}
     	//画圆角矩形
