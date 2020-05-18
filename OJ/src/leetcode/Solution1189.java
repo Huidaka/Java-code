@@ -18,12 +18,8 @@ public class Solution1189 {
                 map.put(c,map.get(c)+1);
             }
         }
-        if(map.get('l') > 1){
-            map.put('l',map.get('l')/2);
-        }
-        if(map.get('o') > 1){
-            map.put('o',map.get('o')/2);
-        }
+        map.put('l',map.get('l')/2);
+        map.put('o',map.get('o')/2);
         int ret = map.get('l');
         for(int i : map.values()){
             if(i < ret){
