@@ -32,17 +32,17 @@ public class Timer  {
         public void run() {
             while (true){
                 try {
-                    synchronized (this) {
                         Task task = queue.take();
                         long nowTime = System.currentTimeMillis();
                         if(task.time > nowTime){ //把优先级最高的任务取出来，判断任务是否达到执行条件
                             queue.put(task);     //如果没有就把任务放回去，让扫描等待当前时间和任务执行时间时间差后再次进行判断扫描
-                            wait(task.time - nowTime);
+                            synchronized (this) {
+                                wait(task.time - nowTime);
+                            }
                         }
                         else{
                             task.run();
                         }
-                    }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
