@@ -57,11 +57,11 @@ public class UserDao {
     }
 
     public static void main(String[] args) {
-        User user = new User();
-        user.setUsername("郭奥辉");
-        user.setPassword("123456");
+//        User user = new User();
+//        user.setUsername("郭奥辉");
+//        user.setPassword("123456");
         UserDao userDao = new UserDao();
-        userDao.addUser(user);
+//        userDao.addUser(user);
         User user1 = userDao.selectUserName("郭奥辉");
         System.out.println(user1);
     }
