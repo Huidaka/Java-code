@@ -14,7 +14,6 @@ public class HtmlGenerator {
         ret.append(String.format("<a href = \"%s\"> 请点击跳转 </a>",url));
         ret.append("</body>");
         ret.append("</html>");
-        System.out.println(ret.toString());
         return ret.toString();
     }
 }
