@@ -56,6 +56,31 @@ public class UserDao {
         return null;
     }
 
+    public User selectById(int id){
+        Connection connection = DButil.getConnection();
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            String sql = String.format("select * from user where userid = ?");
+            statement = connection.prepareStatement(sql);
+            statement.setInt(1,id);
+            resultSet = statement.executeQuery();
+            if(resultSet.next()){
+                User user = new User();
+                user.setUserId(resultSet.getInt(1));
+                user.setUsername(resultSet.getString(2));
+                user.setPassword(resultSet.getString(3));
+                return user;
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        finally {
+            DButil.close(connection,statement,resultSet);
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
 //        User user = new User();
 //        user.setUsername("郭奥辉");
