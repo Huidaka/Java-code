@@ -11,4 +11,7 @@
         <filter-name>loginFilter</filter-name>
         <url-pattern>*.html</url-pattern>
     </filter-mapping>
+    <welcome-file-list>
+        <welcome-file>login.html</welcome-file>
+    </welcome-file-list>
 </web-app>
