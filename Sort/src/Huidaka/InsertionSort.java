@@ -12,10 +12,10 @@ import java.util.concurrent.ForkJoinPool;
  */
 public class InsertionSort {
     public static void insertSort(int[] array) {
-        for (int i = 1, j = 0; i < array.length; i++) {
+        for(int i=1,j=0; i<array.length; i++){
             int temp = array[i];
-            for (j = i-1; j >= 0 ; j--) {
-                if(array[j] > temp){
+            for(j = i-1; j>=0; j--){
+                if(temp < array[j]){
                     array[j+1] = array[j];
                 }
                 else{
