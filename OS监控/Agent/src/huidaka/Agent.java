@@ -22,7 +22,7 @@ public class Agent {
         OperatingSystemMXBean platformMXBean = ManagementFactory.getPlatformMXBean(OperatingSystemMXBean.class);
         while (true) {
             //获取cpu的实时使用率
-            long time = System.currentTimeMillis()/1000;//以秒为单位
+            long time = System.currentTimeMillis();//以秒为单位
             double percent = platformMXBean.getSystemCpuLoad();
             //封装消息
             String message = String.format("%s$%d$%.4f",hostname,time,percent);
