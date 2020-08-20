@@ -4,7 +4,7 @@ package leetcode;
  * 通配符匹配
  */
 class Solution44 {
-    public boolean isMatctao'nh(String s, String p) {
+    public boolean isMatch(String s, String p) {
         int m = s.length();
         int n = p.length();
         boolean[][] dp = new boolean[m + 1][n + 1];
