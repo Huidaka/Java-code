@@ -20,8 +20,10 @@ public class loginFilter implements Filter {
         /** 如果处理HTTP请求，并且需要访问诸如getHeader或getCookies等在ServletRequest中* 无法得到的方法，就要把此request对象构造成HttpServletRequest*/
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         String currentURL = request.getRequestURI();
+        System.out.println(currentURL);
         //取得根目录所对应的绝对路径:
         String targetURL = currentURL.substring(currentURL.indexOf("/", 1), currentURL.length());
+        System.out.println(targetURL);
         //截取到当前文件名用于比较
         HttpSession session = request.getSession(false);
         if (!"/login.html".equals(targetURL)) {//判断当前页是否是重定向以后的登录页面页面，如果是就不做session的判断，防止出现死循环
@@ -35,7 +37,6 @@ public class loginFilter implements Filter {
         }
         //加入filter链继续向下执行
         filterChain.doFilter(request, response);
-        /** 调用FilterChain对象的doFilter方法。Filter接口的doFilter方法取一个FilterChain对象作* 为它 的一个参数。在调用此对象的doFilter方法时，激活下一个相关的过滤器。如果没有另* 一个过滤器与servlet或JSP页面关联，则servlet或JSP页面被激活。*/
     }
 
     @Override
