@@ -22,7 +22,7 @@ public class TcpServer {
 
     public void start(){
         CommandBuilder commandBuilder = new CommandBuilder();
-        try (ServerSocket serverSocket = new ServerSocket(8000)){
+        try (ServerSocket serverSocket = new ServerSocket(8001)){
             while (true) {
                 Socket socket = serverSocket.accept();
                 commandBuilder.buildAndRun(socket);

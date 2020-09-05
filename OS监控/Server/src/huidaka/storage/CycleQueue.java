@@ -28,6 +28,7 @@ public class CycleQueue<T> {
         if(size != 0){
             T ret = array[frontIndex];
             frontIndex = (frontIndex+1) % array.length;
+            size--;
             return ret;
         }
         else{

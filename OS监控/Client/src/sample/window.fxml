@@ -1,0 +1,20 @@
+<?import javafx.scene.layout.GridPane?>
+
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<GridPane fx:controller="sample.Controller"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+
+    <LineChart fx:id="chart" GridPane.rowIndex="0">
+        <xAxis>
+            <NumberAxis />
+        </xAxis>
+        <yAxis>
+            <NumberAxis />
+        </yAxis>
+    </LineChart>
+
+    <Button text="点我" GridPane.rowIndex="1" onAction="#refreshChart" />
+</GridPane>

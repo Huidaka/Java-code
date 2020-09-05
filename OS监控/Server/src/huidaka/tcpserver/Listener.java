@@ -62,7 +62,14 @@ public class Listener {
 
     private static void work() throws InterruptedException {
         for(String hostname : subscribers.keySet()){
-            ReportData reportData = Storage.getNewReportData(hostname);
+            ReportData reportData;
+            try {
+                reportData = Storage.getNewReportData(hostname);
+            }catch (RuntimeException runtimeException){
+                runtimeException.printStackTrace();
+                System.out.println("队列为空");
+                reportData = null;
+            }
             if(reportData == null){
                 continue;
             }
