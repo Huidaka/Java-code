@@ -1,26 +1,43 @@
 package leetcode;
 
+import java.util.LinkedList;
+
 /**
  * 超级次方
  */
 public class Solution372 {
-    public int superPow(int a, int[] b) {
-        int numB=0;
-        a=a%1337;
-        if(a==0){
-            return 0;
-        }
-        for(int i=0;i<b.length;i++){
-            numB+=b[i];
-            numB*=10;
-        }
-        numB/=10;
-        int x=a;
-        for(int j=0;j<numB;j++){
-            x=x%1337;
-            x*=a;
-        }x/=a;
-        return x;
-    }
+    class Solution {
+        int mod=1337;
+        int superPow(int n,int[] nums){
+            LinkedList<Integer> list = new LinkedList<>();
+            for (int e:nums)
+                list.add(e);
 
+            return myPow(n,list);
+        }
+
+        private int myPow(int n, LinkedList<Integer> list) {
+            if (list.size()==0)
+                return 1;
+            Integer last = list.removeLast();
+            n=n%mod;
+            int part1=quickPow(n,last);
+            int part2=quickPow(myPow(n,list),10);
+            return (part1*part2)%mod;
+        }
+
+        private int quickPow(int n, Integer k) {
+
+            int res=1;
+            int temp=n%mod;
+            while (k>0){
+                if ((k &1) ==1 ){
+                    res=(res*temp)%mod;
+                }
+                temp=(temp*temp)%mod;
+                k=k>>1;
+            }
+            return res%mod;
+        }
+    }
 }
